@@ -1,6 +1,9 @@
 package main
 
-import "github.com/gin-gonic/gin"
+import (
+	"gin_test01/web/controller"
+	"github.com/gin-gonic/gin"
+)
 
 func main() {
 
@@ -10,7 +13,9 @@ func main() {
 	// router.GET("/", func(c *gin.Context) {
 	// 	c.Writer.WriteString("demo start")
 	// })
-	router.Static("/", "web/view")
+	router.Static("/home", "web/view")
+	// 此处GetSession是回调函数，只用写函数名
+	router.GET("/api/v1.0/session", controller.GetSeesion)
 
 	//   3 启动运行
 	router.Run(":8080")

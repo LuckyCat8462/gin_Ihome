@@ -1,4 +1,4 @@
-package controller
+package test
 
 import (
 	"context"
@@ -33,22 +33,18 @@ func GetImageCd(ctx *gin.Context) {
 	//指定consul服务发现
 	consulReg := consul.NewConsulRegistry()
 	consulService := micro.NewService(micro.Registry(consulReg))
-	//初始化客户端
-	microClient := getCaptcha.NewGetCaptchaService("getCaptcha", consulService.Client())
+	//调用函数
+	microClient := getCaptcha.NewGetCaptchaService("getcaptcha", consulService.Client())
 	//调用远程服务
-	//microClient.Call(context.TODO(), &getCaptcha.Request{Uuid: uuid})
 	resp, err := microClient.Call(context.TODO(), &getCaptcha.Request{})
 	if err != nil {
-		fmt.Println(err)
-		return
+		fmt.Println("未找到远程服务——")
 	}
 	//resp并不能直接使用，因为传入服务端时进行了序列化，此时还需要将得到的数据进行反序列化
 	var img captcha.Image
-	//img := captcha.Image{}
 	json.Unmarshal(resp.Img, &img)
 	//将图片写入到浏览器
-
 	png.Encode(ctx.Writer, img)
-	//fmt.Println("str", string(resp.Img))
+
 	fmt.Println("uuid", uuid)
 }

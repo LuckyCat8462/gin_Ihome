@@ -13,7 +13,7 @@ func main() {
 
 	// Create service
 	service := micro.NewService(
-		micro.Name("getcaptcha"),
+		micro.Name("getCaptcha"),
 		micro.Registry(consulReg),             //添加注册
 		micro.Address("192.168.81.128:18546"), //主动添加addr,防止其生成随机port
 		micro.Version("latest"),

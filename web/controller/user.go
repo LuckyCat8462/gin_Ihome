@@ -37,8 +37,9 @@ func GetImageCd(ctx *gin.Context) {
 	microClient := getCaptcha.NewGetCaptchaService("getCaptcha", consulService.Client())
 	//调用远程服务
 	//microClient.Call(context.TODO(), &getCaptcha.Request{Uuid: uuid})
-	resp, err := microClient.Call(context.TODO(), &getCaptcha.Request{})
+	resp, err := microClient.Call(context.TODO(), &getCaptcha.Request{Uuid: uuid})
 	if err != nil {
+		fmt.Println("未找到远程服务。。。")
 		fmt.Println(err)
 		return
 	}

@@ -5,17 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="efdef0cc-7d5b-4510-86ae-c2fe4913e5b8" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/service/getCaptcha/conf/comic.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/proto/getCaptcha.pb.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/proto/getCaptcha.pb.micro.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/proto/getCaptcha.proto" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/test/user.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gin_test01.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gin_test01.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/getCaptcha/model/modelFuc.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/test/redistest.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/getCaptcha/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/service/getCaptcha/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/getCaptcha/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/service/getCaptcha/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/getCaptcha/handler/getCaptcha.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/getCaptcha/handler/getCaptcha.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/getCaptcha/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/getCaptcha/main.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/controller/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/web/controller/user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/test/getCaptcha.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/web/test/getCaptcha.pb.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/test/getCaptcha.pb.micro.go" beforeDir="false" afterPath="$PROJECT_DIR$/web/test/getCaptcha.pb.micro.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/test/imagetest.go" beforeDir="false" afterPath="$PROJECT_DIR$/web/test/imagetest.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/test/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/web/test/user.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,28 +45,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultGoTemplateProperty": "Go File",
-    "Go 构建.go build getCaptcha.executor": "Run",
-    "Go 构建.go build gin_test01/web.executor": "Run",
-    "Go 构建.go build imagetest.go.executor": "Run",
-    "Go 构建.go build main.go.executor": "Run",
-    "Go 测试.go test gin_test01/web/test.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.go.formatter.settings.were.checked": "true",
-    "RunOnceActivity.go.migrated.go.modules.settings": "true",
-    "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
-    "git-widget-placeholder": "main",
-    "go.import.settings.migrated": "true",
-    "go.sdk.automatically.set": "true",
-    "last_opened_file_path": "/home/neko/Learning/WorkTools/Go_WorkSapce/src/gin_test01/web",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors.Go"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultGoTemplateProperty&quot;: &quot;Go File&quot;,
+    &quot;Go 构建.go build getCaptcha.executor&quot;: &quot;Run&quot;,
+    &quot;Go 构建.go build gin_test01/web.executor&quot;: &quot;Run&quot;,
+    &quot;Go 构建.go build gin_test01/web/test.executor&quot;: &quot;Run&quot;,
+    &quot;Go 构建.go build imagetest.go.executor&quot;: &quot;Run&quot;,
+    &quot;Go 构建.go build main.go.executor&quot;: &quot;Run&quot;,
+    &quot;Go 测试.go test gin_test01/web/test.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.modules.go.list.on.any.changes.was.set&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
+    &quot;go.sdk.automatically.set&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/neko/Learning/WorkTools/Go_WorkSapce/src/gin_test01/web&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.IDE.editor.colors.Go&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/web" />
@@ -99,6 +103,15 @@
       <filePath value="$PROJECT_DIR$/web/main.go" />
       <method v="2" />
     </configuration>
+    <configuration name="go build gin_test01/web/test" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="gin_test01" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="FILE" />
+      <package value="gin_test01/web/test" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/web/test/redistest.go" />
+      <method v="2" />
+    </configuration>
     <configuration name="go build imagetest.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="gin_test01" />
       <working_directory value="$PROJECT_DIR$" />
@@ -117,24 +130,13 @@
       <filePath value="$PROJECT_DIR$/web/main.go" />
       <method v="2" />
     </configuration>
-    <configuration name="go test gin_test01/web/test" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
-      <module name="gin_test01" />
-      <working_directory value="$PROJECT_DIR$/web/test" />
-      <root_directory value="$PROJECT_DIR$" />
-      <kind value="PACKAGE" />
-      <package value="gin_test01/web/test" />
-      <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$" />
-      <framework value="gotest" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Go 构建.go build gin_test01/web" />
+        <item itemvalue="Go 构建.go build gin_test01/web/test" />
         <item itemvalue="Go 构建.go build main.go" />
         <item itemvalue="Go 构建.go build getCaptcha" />
         <item itemvalue="Go 构建.go build imagetest.go" />
-        <item itemvalue="Go 测试.go test gin_test01/web/test" />
       </list>
     </recent_temporary>
   </component>

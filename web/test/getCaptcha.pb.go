@@ -4,7 +4,7 @@
 // 	protoc        v3.21.2
 // source: proto/getCaptcha.proto
 
-package test
+package main
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"

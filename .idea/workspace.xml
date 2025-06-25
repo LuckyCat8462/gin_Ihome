@@ -5,20 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="efdef0cc-7d5b-4510-86ae-c2fe4913e5b8" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/service/getCaptcha/model/modelFuc.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/test/redistest.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Learning/01_ORM.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Learning/02_GROM.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Learning/03_MySQL_Linux.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/getCaptcha/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/service/getCaptcha/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/getCaptcha/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/service/getCaptcha/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/getCaptcha/handler/getCaptcha.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/getCaptcha/handler/getCaptcha.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/getCaptcha/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/getCaptcha/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/controller/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/web/controller/user.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/test/getCaptcha.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/web/test/getCaptcha.pb.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/test/getCaptcha.pb.micro.go" beforeDir="false" afterPath="$PROJECT_DIR$/web/test/getCaptcha.pb.micro.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/test/imagetest.go" beforeDir="false" afterPath="$PROJECT_DIR$/web/test/imagetest.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/test/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/web/test/user.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

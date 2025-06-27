@@ -2,11 +2,13 @@ package main
 
 import (
 	"gin_test01/web/controller"
+	"gin_test01/web/model"
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
-
+	//初始化Mysql连接池
+	model.InitDb()
 	//   1 初始化路由
 	router := gin.Default()
 	//   2 路由匹配

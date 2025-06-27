@@ -1,5 +1,8 @@
 package Learning
 
+//用户名neko
+//密码neko123456
+
 //1. 确认mysql服务，启动：` ps xua | grep mysql`
 //2. 连接MySQL数据库： mysql -uroot -p123456
 //3. 查看数据库：show databases;

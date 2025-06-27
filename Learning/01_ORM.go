@@ -1,5 +1,6 @@
 package Learning
 
+//一、基本概念
 //ORM：Object  Relational   Mapping  —— 对象关系映射
 //作用：
 //
@@ -13,3 +14,6 @@ package Learning
 //- go语言支持的 ORM：
 //  - gORM：http://gorm.book.jasperxu.com/
 //  - xORM：
+
+//二、ORM操作数据库
+//1.连接数据库

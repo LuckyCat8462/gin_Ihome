@@ -8,23 +8,27 @@
 
 错误代码表格
 
-| 错误码 | 错误解释       | 对应英文       |
-| ------ | -------------- | -------------- |
-| 0      | 成功           | RECODE_OK      |
-| 4001   | 数据库查询错误 | RECODE_DBERR   |
-| 4002   | 无数据         | RECODE_NODATA  |
-| 4003   | 数据错误       | RECODE_DATAERR |
-|        |                |                |
-|        |                |                |
-|        |                |                |
-|        |                |                |
-|        |                |                |
-|        |                |                |
-|        |                |                |
-|        |                |                |
-|        |                |                |
-|        |                |                |
-|        |                |                |
+| 错误码 | 错误解释               | 对应英文          |
+| ------ | ---------------------- | ----------------- |
+| 0      | 成功                   | RECODE_OK         |
+| 4001   | 数据库查询错误         | RECODE_DBERR      |
+| 4002   | 无数据                 | RECODE_NODATA     |
+| 4003   | 数据错误               | RECODE_DATAERR    |
+| 4004   | 数据错误               | RECODE_DATAERR    |
+| 4101   | 用户未登录             | RECODE_SESSIONERR |
+| 4102   | 用户登录失败           | RECODE_LOGINERR   |
+| 4103   | 参数错误               | RECODE_PARAMERR   |
+| 4104   | 用户不存在或未激活     | RECODE_USERONERR  |
+| 4105   | 用户身份错误           | RECODE_ROLEERR    |
+| 4106   | 密码错误               | RECODE_PWDERR     |
+| 4107   | 用户已经注册           | RECODE_USERERR    |
+| 4108   | 手机号错误             | RECODE_MOBILEERR  |
+| 4201   | 非法请求或请求次数受限 | RECODE_REQERR     |
+| 4202   | IP受限                 | RECODE_IPERR      |
+| 4301   | 第三方系统错误         | RECODE_THIRDERR   |
+| 4302   | 文件读写错误           | RECODE_IOERR      |
+| 4500   | 内部错误               | RECODE_SERVERERR  |
+| 4501   | 未知错误               | RECODE_UNKNOWERR  |
 
 ​	
 

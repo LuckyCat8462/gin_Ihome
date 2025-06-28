@@ -22,8 +22,7 @@ func main() {
 	// 暂时用不上Initialize service
 	//service.Init()
 	// Register handler
-
-	user.UserHandler(service.Server(), new(handler.User))
+	user.RegisterUserHandler(service.Server(), handler.New())
 
 	// Run service
 	service.Run()

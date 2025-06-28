@@ -17,9 +17,16 @@ func main() {
 	// })
 	router.Static("/home", "web/view")
 	// 此处GetSession是回调函数，只用写函数名
-	router.GET("/api/v1.0/session", controller.GetSession)
+	//router.GET("/api/v1.0/imagecode/:uuid", controller.GetImageCd)
+	//添加路由组
+	r1 := router.Group("/api/v1.0")
+	{
+		r1.GET("/session", controller.GetSession)
+		r1.GET("/imagecode/:uuid", controller.GetImageCd)
+		r1.POST("/users", controller.PostRet)
+		r1.GET("/areas", controller.GetArea)
+	}
 
-	router.GET("/api/v1.0/imagecode/:uuid", controller.GetImageCd)
 	//   3 启动运行
 	router.Run(":8080")
 }

@@ -16,7 +16,6 @@ func New() *GetCaptcha {
 	return &GetCaptcha{}
 }
 
-// Call is a single request handler called via client.Call or the generated client code
 func (e *GetCaptcha) Call(ctx context.Context, req *pb.Request, rsp *pb.Response) error {
 	// 生成图片验证码
 	// 初始化对象

@@ -25,6 +25,18 @@ package Learning
 //查看当前数据库的键的数量：
 //DBSIZE
 
+//// redis.Pool ——  Ctrl-B 查看 redis库， 连接池属性
+//type Pool struct {
+//	Dial func() (Conn, error)	// 连接数据库使用
+//	。。。。
+//	MaxIdle int		// 最大空闲数 == 初始化连接数
+//	MaxActive int	// 最大存活数 > MaxIdle
+//	IdleTimeout time.Duration	// 空闲超时时间。
+//	。。。。
+//	MaxConnLifetime time.Duration	// 最大生命周期。
+//	。。。。
+//}
+
 //检查一个键是否存在：
 //
 //EXISTS mykey

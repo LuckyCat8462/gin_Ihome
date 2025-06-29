@@ -25,7 +25,7 @@ func SaveImageCode(code, uuid string) error {
 	//set后可以直接跟key value
 	//reply, err := conn.Do("SET", uuid, "this is a test")
 	//setex后key要跟上时长
-	_, err = conn.Do("SETEX", uuid, 60*5, code)
+	_, err = conn.Do("setex", uuid, 60*5, code)
 
 	//	3.回复助手类
 	//	此处无需恢复助手

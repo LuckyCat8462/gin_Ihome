@@ -36,6 +36,7 @@ func (e *GetCaptcha) Call(ctx context.Context, req *pb.Request, rsp *pb.Response
 
 	//存储图片中数据到redis
 	err := model.SaveImageCode(str1, req.Uuid)
+
 	if err != nil {
 		return err
 	}

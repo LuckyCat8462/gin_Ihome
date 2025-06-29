@@ -6,6 +6,7 @@ toolchain go1.24.4
 
 require (
 	github.com/go-sql-driver/mysql v1.9.2
+	github.com/gomodule/redigo v1.9.2
 	go-micro.dev/v5 v5.9.0
 	google.golang.org/protobuf v1.36.6
 	gorm.io/driver/mysql v1.6.0

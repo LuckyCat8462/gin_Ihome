@@ -5,24 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="efdef0cc-7d5b-4510-86ae-c2fe4913e5b8" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/Learning/05_Instraction.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Learning/06_redis.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/proto/user/user.pb.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/proto/user/user.pb.micro.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/proto/user/user.proto" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/utils/utils.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Learning/07_CookieAndSeesion.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Learning/06_redis.go" beforeDir="false" afterPath="$PROJECT_DIR$/Learning/06_redis.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service/getCaptcha/handler/getCaptcha.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/getCaptcha/handler/getCaptcha.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/user/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/user/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/getCaptcha/model/modelFuc.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/getCaptcha/model/modelFuc.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/user/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/service/user/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/user/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/service/user/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/user/model/modelFunc.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/user/model/modelFunc.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/controller/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/web/controller/user.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/web/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/model/modelFunc.go" beforeDir="false" afterPath="$PROJECT_DIR$/web/model/modelFunc.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/proto/getCaptcha.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/web/proto/getCaptcha/getCaptcha.pb.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/proto/getCaptcha.pb.micro.go" beforeDir="false" afterPath="$PROJECT_DIR$/web/proto/getCaptcha/getCaptcha.pb.micro.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/proto/getCaptcha.proto" beforeDir="false" afterPath="$PROJECT_DIR$/web/proto/getCaptcha/getCaptcha.proto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/test/02_redistest.go" beforeDir="false" afterPath="$PROJECT_DIR$/web/test/02_redistest.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/view/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/view/register.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

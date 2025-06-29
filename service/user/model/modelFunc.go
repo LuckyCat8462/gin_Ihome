@@ -3,8 +3,34 @@ package model
 import (
 	"crypto/md5"
 	"encoding/hex"
+	"github.com/gomodule/redigo/redis"
 )
 
+// 创建全局变量redis,连接池句柄
+var RedisPool redis.Pool
+
+// 创建一个函数,用于初始化连接池
+func InitRedis() {
+	//链接redis
+	RedisPool = redis.Pool{
+		MaxIdle:         20,
+		MaxActive:       50,
+		MaxConnLifetime: 60 * 5,
+		IdleTimeout:     60,
+		Dial: func() (redis.Conn, error) {
+			return redis.Dial("tcp", "192.168.81.128:6379")
+		},
+	}
+	//RedisPool = redis.Pool{
+	//	MaxIdle:         20,
+	//	MaxActive:       50,
+	//	MaxConnLifetime: 60 * 5,
+	//	IdleTimeout:     60,
+	//	Dial: func() (redis.Conn, error) {
+	//		return redis.Dial("tcp", "192.168.81.128:6379")
+	//	},
+	//}
+}
 func RegisterUser(mobile, pwd string) error {
 	var user User
 	user.Name = mobile // 默认使用手机号作为用户名
@@ -19,3 +45,25 @@ func RegisterUser(mobile, pwd string) error {
 	// 插入数据到MySQL
 	return GlobalConn.Create(&user).Error
 }
+
+//// 校验图片验证码
+//func CheckImgCode(uuid, imgCode string) bool {
+//	// 链接 redis --- 从链接池中获取链接
+//	conn, err := redis.Dial("tcp", "192.168.6.108:6379")
+//	if err != nil {
+//		fmt.Println("redis.Dial err:", err)
+//		return false
+//	}
+//	//conn := RedisPool.Get()
+//	defer conn.Close()
+//
+//	// 查询 redis 数据
+//	code, err := redis.String(conn.Do("get", uuid))
+//	if err != nil {
+//		fmt.Println("查询错误 err:", err)
+//		return false
+//	}
+//
+//	// 返回校验结果
+//	return code == imgCode
+//}

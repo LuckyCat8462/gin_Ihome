@@ -25,5 +25,12 @@ package Learning
 //### 对比 Cookie 和 Session
 //
 //1.  Cookie 存储在 浏览器， 在哪生成呢？
+//		在web服务生成
 //2.  Session 存储在 服务器，在哪生成呢？
+//		session是以cookie加密为key,在web服务生成的
 //3.  什么时候生成Cookie ， 什么时候生成 Session？
+
+//	a.浏览器发送请求-不携带数据,到web服务
+//	b.web服务产生cookie,携带cookie返回到浏览器;浏览器存储cookie
+//	c.cookie加密作为key,生产session作为value,存入容器中
+//	d.浏览器携带上次的cookie发送到web服务;web服务以cookie加密为key查session

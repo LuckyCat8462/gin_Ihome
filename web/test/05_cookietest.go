@@ -1,24 +1,41 @@
 package main
 
-import "github.com/gin-gonic/gin"
+import (
+	"fmt"
+	"github.com/gin-contrib/sessions"
+	"github.com/gin-contrib/sessions/redis"
+
+	//"github.com/gomodule/redigo/redis"
+	//"github.com/gin-contrib/sessions/redis"
+	"github.com/gin-gonic/gin"
+)
 
 func main() {
+	//初始化容器
 	router := gin.Default()
 
+	store, _ := redis.NewStore(10, "tcp", "192.168.81.128:6379", "", "", []byte("secret"))
+	//可以设置临时session
+	store.Options(sessions.Options{MaxAge: 60 * 60 * 24})
+	//使用容器
+	router.Use(sessions.Sessions("sessionTest1", store))
+	//此处的sessionTest1为cookie值
+
 	router.GET("/test", func(c *gin.Context) {
-		//name 名称;
-		//value 值;
-		//maxAge：最大生命周期。
-		//	 = 0 : 表示没指定该属性。
-		//	 < 0 ：表示删除。 ---- // 删除Cookie 的操作， 可以使用 该属性实现。
-		//	 > 0 ：指定生命周期。 单位：s
-		//path：路径。—— 通常传""
-		//domain：域名。 IP地址。
-		//secure：设置是否安全保护。true：不能在 地址栏前，点击查看。 可以使用 F12 查看。
-		//false：能在 地址栏前，点击查看。
-		//httpOnly：是否只针对http协议。
-		c.SetCookie("test1", "nekotest1", 60*60, "", "", true, true)
-		c.Writer.WriteString("测试cookie...")
+		session := sessions.Default(c)
+
+		//设置session
+		session.Set("session1", "sessionTest1")
+		session.Save()
+		c.Writer.WriteString("测试session...")
+
+		//设置cookie
+		//c.SetCookie("test1", "nekotest1", 60*60, "", "", true, true)
+		//c.Writer.WriteString("测试cookie...")
+
+		//	获取session
+		v := session.Get("session1")
+		fmt.Println("获取session", v)
 	})
 
 	router.Run(":8089")

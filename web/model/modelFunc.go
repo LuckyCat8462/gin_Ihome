@@ -39,12 +39,12 @@ func SaveImgCode(code, uuid string) error {
 // 校验图片验证码
 func CheckImgCode(uuid, imgCode string) bool {
 	// 链接 redis --- 从链接池中获取链接
-	/*	conn, err := redis.Dial("tcp", "192.168.6.108:6379")
-		if err != nil {
-			fmt.Println("redis.Dial err:", err)
-			return false
-		}*/
-	conn := RedisPool.Get()
+	conn, err := redis.Dial("tcp", "192.168.6.108:6379")
+	if err != nil {
+		fmt.Println("redis.Dial err:", err)
+		return false
+	}
+	//conn := RedisPool.Get()
 	defer conn.Close()
 
 	// 查询 redis 数据
@@ -69,3 +69,13 @@ func CheckImgCode(uuid, imgCode string) bool {
 //
 //	return err
 //}
+
+// 处理登录业务
+func Login(mobile, pwd string) (string, error) {
+	var user User
+	err := GlobalConn.Where("mobile = ?", mobile).
+		Where("password_hash = ?", pwd).
+		Find(&user).Error
+
+	return user.Name, err
+}

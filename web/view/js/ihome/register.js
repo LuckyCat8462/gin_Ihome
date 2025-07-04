@@ -113,8 +113,8 @@ $(document).ready(function() {
             return;
         } 
         if (!phoneCode) {
-            $("#phone-code-err span").html("请填写短信验证码！");
-            $("#phone-code-err").show();
+            // $("#phone-code-err span").html("请填写短信验证码！");
+            // $("#phone-code-err").show();
             return;
         }
         if (!passwd) {

@@ -34,3 +34,26 @@ package Learning
 //	b.web服务产生cookie,携带cookie返回到浏览器;浏览器存储cookie
 //	c.cookie加密作为key,生产session作为value,存入容器中
 //	d.浏览器携带上次的cookie发送到web服务;web服务以cookie加密为key查session
+
+//###  Session操作
+//- gin 框架， 默认不支持Session功能。要想在 gin 中使用 Session，需要添加插件！
+//
+//- gin 框架中的 “插件”  —— 中间件 —— gin MiddleWare
+//
+//- 去 github 搜索，gin Session 可以得到：https://github.com/gin-contrib/sessions
+//
+//- 安装 Session 插件。
+//go get github.com/gin-contrib/sessions
+
+//context.SetCookie()参数
+//name 名称;
+//value 值;
+//maxAge：最大生命周期。
+//	 = 0 : 表示没指定该属性。
+//	 < 0 ：表示删除。 ---- // 删除Cookie 的操作， 可以使用 该属性实现。
+//	 > 0 ：指定生命周期。 单位：s
+//path：路径。—— 通常传""
+//domain：域名。 IP地址。
+//secure：设置是否安全保护。true：不能在 地址栏前，点击查看。 可以使用 F12 查看。
+//false：能在 地址栏前，点击查看。
+//httpOnly：是否只针对http协议。

@@ -9,19 +9,45 @@ import (
 	userMicro "gin_test01/web/proto/user"
 	"gin_test01/web/utils"
 	"github.com/afocus/captcha"
+	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
 	"github.com/gomodule/redigo/redis"
 	"image/png"
 	"net/http"
 )
 
-// 获取session信息
+// // 测试用-获取session信息
+//func GetSession(ctx *gin.Context) {
+//	// 	初始化错误返回的map
+//	resp := make(map[string]string)
+//	// 调用utils包种的宏，go中称为常量
+//	resp["errno"] = utils.RECODE_SESSIONERR
+//	resp["errmsg"] = utils.RecodeText(utils.RECODE_SESSIONERR)
+//
+//	ctx.JSON(http.StatusOK, resp)
+//}
+
 func GetSession(ctx *gin.Context) {
-	// 	初始化错误返回的map
-	resp := make(map[string]string)
-	// 调用utils包种的宏，go中称为常量
-	resp["errno"] = utils.RECODE_SESSIONERR
-	resp["errmsg"] = utils.RecodeText(utils.RECODE_SESSIONERR)
+	resp := make(map[string]interface{})
+
+	// 获取 Session 数据
+	s := sessions.Default(ctx) // 初始化 Session 对象
+	userName := s.Get("userName")
+
+	// 用户没有登录.---没存在 MySQL中, 也没存在 Session 中
+	if userName == nil {
+		resp["errno"] = utils.RECODE_SESSIONERR
+		resp["errmsg"] = utils.RecodeText(utils.RECODE_SESSIONERR)
+	} else {
+		resp["errno"] = utils.RECODE_OK
+		resp["errmsg"] = utils.RecodeText(utils.RECODE_OK)
+
+		var nameData struct {
+			Name string `json:"name"`
+		}
+		nameData.Name = userName.(string) // 类型断言
+		resp["data"] = nameData
+	}
 
 	ctx.JSON(http.StatusOK, resp)
 }
@@ -61,6 +87,8 @@ func GetSmscd(ctx *gin.Context) {
 	imgCode := ctx.Query("text")
 	uuid := ctx.Query("id")
 	fmt.Println("out________", phone, imgCode, uuid)
+
+	//result :=
 
 	//// 指定Consul 服务发现
 	//consulReg := consul.NewRegistry()
@@ -147,6 +175,36 @@ func GetArea(ctx *gin.Context) {
 	resp["errno"] = "0"
 	resp["errmsg"] = utils.RecodeText(utils.RECODE_OK)
 	resp["data"] = areas
+
+	ctx.JSON(http.StatusOK, resp)
+}
+
+// 处理登录业务
+func PostLogin(ctx *gin.Context) {
+	//	获取前端数据
+	var loginData struct {
+		Mobile   string `json:"mobile"`
+		PassWord string `json:"password"`
+	}
+	ctx.Bind(&loginData)
+	resp := make(map[string]interface{})
+	//获取数据库数据,查询是否和数据库的数据匹配
+	userName, err := model.Login(loginData.Mobile, loginData.PassWord)
+
+	if err == nil {
+		fmt.Println("登录成功")
+
+		resp["errno"] = utils.RECODE_OK
+		resp["errmsg"] = utils.RecodeText(utils.RECODE_OK)
+
+		s := sessions.Default(ctx)  //初始化session
+		s.Set("userName", userName) //将用户名设置到session中
+		s.Save()
+	} else {
+		fmt.Println("登录失败")
+		resp["errno"] = utils.RECODE_LOGINERR
+		resp["errmsg"] = utils.RecodeText(utils.RECODE_LOGINERR)
+	}
 
 	ctx.JSON(http.StatusOK, resp)
 }

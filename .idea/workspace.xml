@@ -5,9 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="efdef0cc-7d5b-4510-86ae-c2fe4913e5b8" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/web/test/05_cookietest.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Learning/08_redis_seesion.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Learning/07_CookieAndSeesion.go" beforeDir="false" afterPath="$PROJECT_DIR$/Learning/07_CookieAndSeesion.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/user/model/modelFunc.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/user/model/modelFunc.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/controller/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/web/controller/user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/web/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/model/modelFunc.go" beforeDir="false" afterPath="$PROJECT_DIR$/web/model/modelFunc.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/test/05_cookietest.go" beforeDir="false" afterPath="$PROJECT_DIR$/web/test/05_cookietest.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/view/js/ihome/register.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/view/js/ihome/register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/view/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/view/register.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +85,7 @@
       <recent name="$PROJECT_DIR$/web/conf" />
     </key>
   </component>
-  <component name="RunManager" selected="Go 构建.go build gin_test01/web/test">
+  <component name="RunManager" selected="Go 构建.go build gin_test01/web">
     <configuration name="go build gin_test01/web" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="gin_test01" />
       <working_directory value="$PROJECT_DIR$" />
@@ -124,8 +133,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Go 构建.go build gin_test01/web/test" />
         <item itemvalue="Go 构建.go build gin_test01/web" />
+        <item itemvalue="Go 构建.go build gin_test01/web/test" />
         <item itemvalue="Go 构建.go build gin_test01/web/test (2)" />
         <item itemvalue="Go 构建.go build main.go" />
         <item itemvalue="Go 构建.go build gin_test01/web/test (1)" />

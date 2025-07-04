@@ -3,6 +3,7 @@ package model
 import (
 	"crypto/md5"
 	"encoding/hex"
+	"fmt"
 	"github.com/gomodule/redigo/redis"
 )
 
@@ -46,24 +47,24 @@ func RegisterUser(mobile, pwd string) error {
 	return GlobalConn.Create(&user).Error
 }
 
-//// 校验图片验证码
-//func CheckImgCode(uuid, imgCode string) bool {
-//	// 链接 redis --- 从链接池中获取链接
-//	conn, err := redis.Dial("tcp", "192.168.6.108:6379")
-//	if err != nil {
-//		fmt.Println("redis.Dial err:", err)
-//		return false
-//	}
-//	//conn := RedisPool.Get()
-//	defer conn.Close()
-//
-//	// 查询 redis 数据
-//	code, err := redis.String(conn.Do("get", uuid))
-//	if err != nil {
-//		fmt.Println("查询错误 err:", err)
-//		return false
-//	}
-//
-//	// 返回校验结果
-//	return code == imgCode
-//}
+// // 校验图片验证码
+func CheckImgCode(uuid, imgCode string) bool {
+	// 链接 redis --- 从链接池中获取链接
+	conn, err := redis.Dial("tcp", "192.168.81.128:6379")
+	if err != nil {
+		fmt.Println("redis.Dial err:", err)
+		return false
+	}
+	//conn := RedisPool.Get()
+	defer conn.Close()
+
+	// 查询 redis 数据
+	code, err := redis.String(conn.Do("get", uuid))
+	if err != nil {
+		fmt.Println("查询错误 err:", err)
+		return false
+	}
+
+	// 返回校验结果
+	return code == imgCode
+}

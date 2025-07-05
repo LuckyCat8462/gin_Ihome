@@ -5,18 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="efdef0cc-7d5b-4510-86ae-c2fe4913e5b8" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/Learning/08_redis_seesion.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Learning/07_CookieAndSeesion.go" beforeDir="false" afterPath="$PROJECT_DIR$/Learning/07_CookieAndSeesion.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/user/model/modelFunc.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/user/model/modelFunc.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/controller/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/web/controller/user.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/web/main.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/model/modelFunc.go" beforeDir="false" afterPath="$PROJECT_DIR$/web/model/modelFunc.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/test/05_cookietest.go" beforeDir="false" afterPath="$PROJECT_DIR$/web/test/05_cookietest.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/view/js/ihome/register.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/view/js/ihome/register.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/view/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/view/register.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +54,7 @@
     "git-widget-placeholder": "main",
     "go.import.settings.migrated": "true",
     "go.sdk.automatically.set": "true",
-    "last_opened_file_path": "/mnt/hgfs/VMShare/gin_test01",
+    "last_opened_file_path": "/mnt/hgfs/VMShare/第10阶段-GO语言微服务项目/第08天（用户登录-获取细腻-改名-中间件）/2-源代码/bj38web",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",

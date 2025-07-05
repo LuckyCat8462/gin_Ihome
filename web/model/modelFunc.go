@@ -73,9 +73,11 @@ func CheckImgCode(uuid, imgCode string) bool {
 // 处理登录业务
 func Login(mobile, pwd string) (string, error) {
 	var user User
-	err := GlobalConn.Where("mobile = ?", mobile).
+	err := GlobalConn.Where("mobile = ?", mobile).Select("name").
 		Where("password_hash = ?", pwd).
 		Find(&user).Error
-
+	if err != nil {
+		fmt.Println("login函数出错", err)
+	}
 	return user.Name, err
 }

@@ -189,6 +189,7 @@ func PostLogin(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, resp)
 }
 
+// 退出登录
 func DeleteSession(ctx *gin.Context) {
 	resp := make(map[string]interface{})
 	//初始化session对象
@@ -206,4 +207,78 @@ func DeleteSession(ctx *gin.Context) {
 		resp["errmsg"] = utils.RecodeText(utils.RECODE_OK)
 	}
 	ctx.JSON(http.StatusOK, resp)
+}
+
+// 获取用户信息
+func GetUserInfo(ctx *gin.Context) {
+	resp := make(map[string]interface{})
+	defer ctx.JSON(http.StatusOK, resp)
+
+	// 获取 Session, 得到 当前 用户信息
+	s := sessions.Default(ctx)
+	userName := s.Get("userName")
+	// 判断用户名是否存在.
+	if userName == nil { // 用户没登录, 但进入该页面, 恶意进入.
+		resp["errno"] = utils.RECODE_SESSIONERR
+		resp["errmsg"] = utils.RecodeText(utils.RECODE_SESSIONERR)
+		return // 如果出错, 报错, 退出
+	}
+
+	// 根据用户名, 获取 用户信息  ---- 查 MySQL 数据库  user 表.
+	user, err := model.GetUserInfo(userName.(string))
+	if err != nil {
+		resp["errno"] = utils.RECODE_DBERR
+		resp["errmsg"] = utils.RecodeText(utils.RECODE_DBERR)
+		return // 如果出错, 报错, 退出
+	}
+
+	resp["errno"] = utils.RECODE_OK
+	resp["errmsg"] = utils.RecodeText(utils.RECODE_OK)
+
+	temp := make(map[string]interface{})
+	temp["user_id"] = user.ID
+	temp["name"] = user.Name
+	temp["mobile"] = user.Mobile
+	temp["real_name"] = user.Real_name
+	temp["id_card"] = user.Id_card
+	temp["avatar_url"] = user.Avatar_url
+
+	resp["data"] = temp
+}
+
+// 更新用户名
+func PutUserInfo(ctx *gin.Context) {
+	// 获取当前用户名
+	s := sessions.Default(ctx) // 初始化Session 对象
+	userName := s.Get("userName")
+
+	// 获取新用户名		---- 处理 Request Payload 类型数据. Bind()
+	var nameData struct {
+		Name string `json:"name"`
+	}
+	ctx.Bind(&nameData)
+
+	// 更新用户名
+	resp := make(map[string]interface{})
+	defer ctx.JSON(http.StatusOK, resp)
+
+	// 更新数据库中的 name
+	err := model.UpdateUserName(nameData.Name, userName.(string))
+	if err != nil {
+		resp["errno"] = utils.RECODE_DBERR
+		resp["errmsg"] = utils.RecodeText(utils.RECODE_DBERR)
+		return
+	}
+
+	// 更新 Session 数据
+	s.Set("userName", nameData.Name)
+	err = s.Save() // 必须保存
+	if err != nil {
+		resp["errno"] = utils.RECODE_SESSIONERR
+		resp["errmsg"] = utils.RecodeText(utils.RECODE_SESSIONERR)
+		return
+	}
+	resp["errno"] = utils.RECODE_OK
+	resp["errmsg"] = utils.RecodeText(utils.RECODE_OK)
+	resp["data"] = nameData
 }

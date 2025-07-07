@@ -8,6 +8,20 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+func LoginFilter() gin.HandlerFunc {
+	return func(ctx *gin.Context) {
+		// 初始化 Session 对象
+		s := sessions.Default(ctx)
+		userName := s.Get("userName")
+
+		if userName == nil {
+			ctx.Abort() // 从这里返回, 不必继续执行了
+		} else {
+			ctx.Next() // 继续向下
+		}
+	}
+}
+
 func main() {
 	//初始化操作
 	//#
@@ -22,7 +36,7 @@ func main() {
 	//redis.NewStore(10, "tcp", "192.168.81.128:3479", "", "", []byte("secret"))
 	store, _ := redis.NewStore(10, "tcp", "192.168.81.128:6379", "", "", []byte("secret"))
 	//使用容器
-	router.Use(sessions.Sessions("loginSession", store))
+	router.Use(sessions.Sessions("loginSession", store)) //使用中间件--指定容器
 
 	//2.路由匹配
 	router.Static("/home", "web/view")
@@ -36,7 +50,12 @@ func main() {
 		r1.POST("/users", controller.PostRet)
 		r1.GET("/areas", controller.GetArea)
 		r1.POST("/sessions", controller.PostLogin)
+
+		r1.Use(LoginFilter()) //调用中间件--下方的路由都不需要校验session了,可以直接获取数据
 		r1.DELETE("session", controller.DeleteSession)
+		r1.GET("/user", controller.GetUserInfo)
+		r1.PUT("/user/name", controller.PutUserInfo)
+
 	}
 
 	//3.启动运行

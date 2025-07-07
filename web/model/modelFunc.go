@@ -58,18 +58,6 @@ func CheckImgCode(uuid, imgCode string) bool {
 	return code == imgCode
 }
 
-// 存储短信验证码
-//func SaveSmsCode(phone, code string) error {
-//	// 链接 Redis --- 从链接池中获取一条链接
-//	conn := RedisPool.Get()
-//	defer conn.Close()
-//
-//	// 存储短信验证码到 redis 中
-//	_, err := conn.Do("setex", phone+"_code", 60*3, code)
-//
-//	return err
-//}
-
 // 处理登录业务
 func Login(mobile, pwd string) (string, error) {
 	var user User
@@ -80,4 +68,16 @@ func Login(mobile, pwd string) (string, error) {
 		fmt.Println("login函数出错", err)
 	}
 	return user.Name, err
+}
+
+// 获取用户信息
+func GetUserInfo(userName string) (User, error) {
+	var user User
+	err := GlobalConn.Where("name = ?", userName).First(&user).Error
+	return user, err
+}
+
+// 更新用户名
+func UpdateUserName(newName, OldName string) error {
+	return GlobalConn.Model(&User{}).Where("name = ?", OldName).Update("name", newName).Error
 }

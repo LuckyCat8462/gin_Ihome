@@ -81,3 +81,10 @@ func GetUserInfo(userName string) (User, error) {
 func UpdateUserName(newName, OldName string) error {
 	return GlobalConn.Model(&User{}).Where("name = ?", OldName).Update("name", newName).Error
 }
+
+// 根据用户名更新用户头像
+func UpdateAvatar(userName, avatar string) error {
+	return GlobalConn.Model(new(User)).Where("name = ?", userName).
+		Update("avatar_url", avatar).Error
+
+}

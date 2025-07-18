@@ -55,6 +55,7 @@ func main() {
 		r1.DELETE("session", controller.DeleteSession)
 		r1.GET("/user", controller.GetUserInfo)
 		r1.PUT("/user/name", controller.PutUserInfo)
+		r1.POST("user/avatar", controller.PostAvater)
 
 	}
 

@@ -12,8 +12,10 @@ import (
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
 	"github.com/gomodule/redigo/redis"
+	"github.com/tedcy/fdfs_client"
 	"image/png"
 	"net/http"
+	"path"
 )
 
 //// 测试用-获取session信息
@@ -241,7 +243,7 @@ func GetUserInfo(ctx *gin.Context) {
 	temp["mobile"] = user.Mobile
 	temp["real_name"] = user.Real_name
 	temp["id_card"] = user.Id_card
-	temp["avatar_url"] = user.Avatar_url
+	temp["avatar_url"] = "http://192.168.81.128:8089" + user.Avatar_url
 
 	resp["data"] = temp
 }
@@ -281,4 +283,41 @@ func PutUserInfo(ctx *gin.Context) {
 	resp["errno"] = utils.RECODE_OK
 	resp["errmsg"] = utils.RecodeText(utils.RECODE_OK)
 	resp["data"] = nameData
+}
+
+// 上传头像
+func PostAvater(ctx *gin.Context) {
+	////	获取图片文件,静态文件
+	file, _ := ctx.FormFile("avatar")
+	////	上传文件到项目中
+	//err := ctx.SaveUploadedFile(FileHeader, "test/"+FileHeader.Filename)
+	//fmt.Println(err)
+
+	//上传文件到fdfs中
+	clt, _ := fdfs_client.NewClientWithConfig("/etc/fdfs/client.conf")
+	//打开文件，读取文件内容
+	f, _ := file.Open()
+
+	buf := make([]byte, file.Size)
+	f.Read(buf)
+	//go语言根据文件名获取文件后缀
+	fileExt := path.Ext(file.Filename) //传文件名
+	//按字节流上传图片内容
+	remoteId, _ := clt.UploadByBuffer(buf, fileExt[1:]) //fileExt是一个切片，所以可以从下标1取
+
+	//获取session，得到当前用户
+	userName := sessions.Default(ctx).Get("userName")
+
+	//根据用户名,更新用户头像
+	model.UpdateAvatar(userName.(string), remoteId)
+
+	resp := make(map[string]interface{})
+	resp["errno"] = "0"
+	resp["errmsg"] = utils.RecodeText(utils.RECODE_OK)
+
+	temp := make(map[string]interface{})
+	temp["avatar_url"] = "http://192.168.81.128:8089" + remoteId
+
+	resp["data"] = temp
+	ctx.JSON(http.StatusOK, resp)
 }

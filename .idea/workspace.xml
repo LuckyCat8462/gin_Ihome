@@ -5,15 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="efdef0cc-7d5b-4510-86ae-c2fe4913e5b8" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/web/test/07_fastdfsTest.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/test/j1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/test/p1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/conf/config.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/user/handler/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/user/handler/user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/user/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/user/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/user/model/modelFunc.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/user/model/modelFunc.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/user/proto/user.pb.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/user/proto/user.pb.micro.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/user/proto/user.proto" beforeDir="false" afterPath="$PROJECT_DIR$/service/user/proto/user.proto" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/controller/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/web/controller/user.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/web/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/model/model.go" beforeDir="false" afterPath="$PROJECT_DIR$/web/model/model.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/model/modelFunc.go" beforeDir="false" afterPath="$PROJECT_DIR$/web/model/modelFunc.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/proto/user/user.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/web/proto/user/user.pb.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/proto/user/user.pb.micro.go" beforeDir="false" afterPath="$PROJECT_DIR$/web/proto/user/user.pb.micro.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/proto/user/user.proto" beforeDir="false" afterPath="$PROJECT_DIR$/web/proto/user/user.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/view/js/ihome/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/view/js/ihome/auth.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +67,7 @@
     "git-widget-placeholder": "main",
     "go.import.settings.migrated": "true",
     "go.sdk.automatically.set": "true",
-    "last_opened_file_path": "/home/neko/Learning/WorkTools/Go_WorkSapce/src/gin_test01/web/test",
+    "last_opened_file_path": "/home/neko/Learning/WorkTools/Go_WorkSapce/src/gin_test01/web/proto/user",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
@@ -69,21 +76,21 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/web/proto/user" />
       <recent name="$PROJECT_DIR$/web/test" />
       <recent name="$PROJECT_DIR$/Learning" />
-      <recent name="$PROJECT_DIR$/web/proto/user" />
       <recent name="$PROJECT_DIR$/service/user" />
       <recent name="$PROJECT_DIR$/service/model" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/service/user/proto" />
       <recent name="$PROJECT_DIR$/web/proto/user" />
       <recent name="$PROJECT_DIR$/web/proto/getCaptcha" />
       <recent name="$PROJECT_DIR$/service/user" />
       <recent name="$PROJECT_DIR$/web/test" />
-      <recent name="$PROJECT_DIR$/web/conf" />
     </key>
   </component>
-  <component name="RunManager" selected="Go 构建.go build gin_test01/web/test (3)">
+  <component name="RunManager" selected="Go 构建.go build gin_test01/web">
     <configuration name="go build gin_test01/web" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="gin_test01" />
       <working_directory value="$PROJECT_DIR$" />
@@ -120,22 +127,22 @@
       <filePath value="$PROJECT_DIR$/web/test/05_cookietest.go" />
       <method v="2" />
     </configuration>
-    <configuration name="go build main.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+    <configuration name="go build user.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="gin_test01" />
       <working_directory value="$PROJECT_DIR$" />
       <kind value="FILE" />
       <package value="gin_test01" />
       <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$/web/main.go" />
+      <filePath value="$PROJECT_DIR$/web/controller/user.go" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Go 构建.go build gin_test01/web/test (3)" />
         <item itemvalue="Go 构建.go build gin_test01/web" />
+        <item itemvalue="Go 构建.go build user.go" />
+        <item itemvalue="Go 构建.go build gin_test01/web/test (3)" />
         <item itemvalue="Go 构建.go build gin_test01/web/test" />
         <item itemvalue="Go 构建.go build gin_test01/web/test (2)" />
-        <item itemvalue="Go 构建.go build main.go" />
       </list>
     </recent_temporary>
   </component>

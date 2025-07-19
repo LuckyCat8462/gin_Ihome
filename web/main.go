@@ -57,6 +57,11 @@ func main() {
 		r1.PUT("/user/name", controller.PutUserInfo)
 		r1.POST("user/avatar", controller.PostAvater)
 
+		//	上传实名认证
+		r1.POST("/user/auth", controller.PutUserAuth)
+		// 获取实名认证
+		r1.GET("/user/auth", controller.GetUserInfo)
+
 	}
 
 	//3.启动运行

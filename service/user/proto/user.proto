@@ -5,7 +5,8 @@ package user;
 option go_package = "./proto;user";
 
 service User {
-	rpc Register(RegReq) returns (Response){}
+	rpc Register(RegReq) returns (Response){};
+	rpc AuthUpdate(AuthReq)returns(AuthResp){}
 }
 
 message RegReq{
@@ -20,6 +21,17 @@ message Request {
 }
 
 message Response {
+	string errno = 1;
+	string errmsg = 2;
+}
+
+message AuthReq{
+	string id_card = 1;
+	string real_name = 2;
+	string userName = 3;
+}
+
+message AuthResp{
 	string errno = 1;
 	string errmsg = 2;
 }

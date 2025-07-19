@@ -68,3 +68,13 @@ func CheckImgCode(uuid, imgCode string) bool {
 	// 返回校验结果
 	return code == imgCode
 }
+
+func SaveRealName(userName, realName, idCard string) error {
+	err := GlobalConn.Model(&User{}).Where("name = ?", userName).
+		Update("id_card", idCard)
+	fmt.Println("save情况", err)
+	return nil
+
+	//Updates(map[string]interface{}{"real_name": realName, "id_card": idCard}).Error
+
+}

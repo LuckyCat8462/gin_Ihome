@@ -2,6 +2,7 @@ package model
 
 import (
 	"fmt"
+	"gin_test01/web/conf"
 	_ "github.com/go-sql-driver/mysql"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
@@ -81,8 +82,9 @@ type OrderHouse struct {
 var GlobalConn *gorm.DB
 
 func InitDb() (*gorm.DB, error) {
-	//func main() {
-	dsn := "neko:neko123456@tcp(127.0.0.1:3306)/search_house?charset=utf8mb4&parseTime=True&loc=Local"
+	//字符串拼接
+	dsn := conf.MysqlName + ":" + conf.MysqlPwd + "@tcp(" + conf.MysqlAddr + ":" + conf.MysqlPort + ")/" + conf.MysqlDB + "?parseTime=true"
+	//dsn := "neko:neko123456@tcp(127.0.0.1:3306)/search_house?charset=utf8mb4&parseTime=True&loc=Local"
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{ //	gorm参数
 		//不要复数表名
 		NamingStrategy:                           schema.NamingStrategy{SingularTable: true},

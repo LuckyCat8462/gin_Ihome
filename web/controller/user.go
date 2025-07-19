@@ -321,3 +321,42 @@ func PostAvater(ctx *gin.Context) {
 	resp["data"] = temp
 	ctx.JSON(http.StatusOK, resp)
 }
+
+type AuthStu struct {
+	IdCard   string `json:"id_card"`
+	RealName string `json:"real_name"`
+}
+
+// 上传实名认证
+func PutUserAuth(ctx *gin.Context) {
+	//获取前端数据
+	var auth AuthStu
+	err := ctx.Bind(&auth)
+
+	//校验数据
+	if err != nil {
+		fmt.Println("获取数据错误", err)
+		return
+	}
+
+	session := sessions.Default(ctx)
+	userName := session.Get("userName")
+
+	//处理数据 微服务
+	microService := utils.InitMicro()
+	microClient := userMicro.NewUserService("micro_user", microService.Client())
+
+	//调用远程服务
+
+	resp, err := microClient.AuthUpdate(context.TODO(), &userMicro.AuthReq{
+		UserName: userName.(string),
+		RealName: auth.RealName,
+		IdCard:   auth.IdCard,
+	})
+	if err != nil {
+		fmt.Println("resp情况", err)
+	}
+
+	//返回数据
+	ctx.JSON(http.StatusOK, resp)
+}

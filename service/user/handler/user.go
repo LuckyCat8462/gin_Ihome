@@ -2,6 +2,7 @@ package handler
 
 import (
 	"context"
+	"fmt"
 	"user/model"
 	user "user/proto"
 	"user/utils"
@@ -27,6 +28,28 @@ func (e *User) Register(ctx context.Context, req *user.RegReq, rsp *user.Respons
 		rsp.Errno = utils.RECODE_OK
 		rsp.Errmsg = utils.RecodeText(utils.RECODE_OK)
 	}
+
+	return nil
+}
+
+func (e *User) AuthUpdate(ctx context.Context, req *user.AuthReq, resp *user.AuthResp) error {
+
+	//存储真实姓名和真是身份证号  数据库
+	fmt.Println("req数据", req)
+
+	err := model.SaveRealName(req.UserName, req.RealName, req.IdCard)
+
+	if err != nil {
+		fmt.Println("save错误", err)
+		resp.Errno = utils.RECODE_DBERR
+		resp.Errmsg = utils.RecodeText(utils.RECODE_DBERR)
+		return nil
+	} else {
+		fmt.Println("怎么的", err)
+	}
+
+	resp.Errno = utils.RECODE_OK
+	resp.Errmsg = utils.RecodeText(utils.RECODE_OK)
 
 	return nil
 }

@@ -6,7 +6,8 @@ import (
 	"fmt"
 	"gin_test01/web/model"
 	getCaptcha "gin_test01/web/proto/getCaptcha"
-	userMicro "gin_test01/web/proto/user"
+
+	registerMicro "gin_test01/web/proto/register"
 	"gin_test01/web/utils"
 	"github.com/afocus/captcha"
 	"github.com/gin-contrib/sessions"
@@ -17,17 +18,6 @@ import (
 	"net/http"
 	"path"
 )
-
-//// 测试用-获取session信息
-//func GetSession1(ctx *gin.Context) {
-//	// 	初始化错误返回的map
-//	resp := make(map[string]string)
-//	// 调用utils包种的宏，go中称为常量
-//	resp["errno"] = utils.RECODE_SESSIONERR
-//	resp["errmsg"] = utils.RecodeText(utils.RECODE_SESSIONERR)
-//
-//	ctx.JSON(http.StatusOK, resp)
-//}
 
 func GetSession(ctx *gin.Context) {
 	// 	初始化错误返回的map
@@ -40,16 +30,16 @@ func GetSession(ctx *gin.Context) {
 		resp["errno"] = utils.RECODE_SESSIONERR
 		resp["errmsg"] = utils.RecodeText(utils.RECODE_SESSIONERR)
 	} else {
-		fmt.Println("session拿到了")
+		fmt.Println("---GetSession拿到了---")
 		resp["errno"] = utils.RECODE_OK
 		resp["errmsg"] = utils.RecodeText(utils.RECODE_OK)
 
 		var nameData struct {
 			Name string `json:"name"`
 		}
-		fmt.Println("nameData输出:", nameData)
 		nameData.Name = userName.(string)
 		resp["data"] = nameData
+		fmt.Println("用户名：", nameData)
 	}
 
 	ctx.JSON(http.StatusOK, resp)
@@ -93,25 +83,25 @@ func GetSmscd(ctx *gin.Context) {
 }
 
 // 发送注册信息
-func PostRet(ctx *gin.Context) {
+func PostReg(ctx *gin.Context) {
 	// 获取数据
 	var regData struct {
 		Mobile   string `json:"mobile"`
 		PassWord string `json:"password"`
-		//SmsCode  string `json:"sms_code"`
 	}
 
 	ctx.Bind(&regData)
 
+	fmt.Println("测试reg数据：", regData.Mobile, regData.PassWord)
+
 	//调用远程服务
 	// 初始化consul
 	microService := utils.InitMicro()
-	microClient := userMicro.NewUserService("micro_user", microService.Client())
+	microClient := registerMicro.NewRegisterService("micro_register", microService.Client())
 
 	// 调用远程函数
-	resp, err := microClient.Register(context.TODO(), &userMicro.RegReq{
-		Mobile: regData.Mobile,
-		//SmsCode:  regData.SmsCode,
+	resp, err := microClient.Register(context.TODO(), &registerMicro.RegRequest{
+		Mobile:   regData.Mobile,
 		Password: regData.PassWord,
 	})
 	if err != nil {
@@ -136,6 +126,7 @@ func GetArea(ctx *gin.Context) {
 	}
 	// 当初使用 "字节切片" 存入, 现在使用 切片类型接收
 	areaData, _ := redis.Bytes(conn.Do("get", "areaData"))
+	fmt.Println("user.go-GetArea函数：获取地址信息")
 	// 没有从 Redis 中获取到数据
 	if len(areaData) == 0 {
 		fmt.Println("从 MySQL 中 获取数据...")
@@ -145,7 +136,7 @@ func GetArea(ctx *gin.Context) {
 		conn.Do("set", "areaData", areaBuf)
 
 	} else {
-		fmt.Println("从 redis 中 获取数据...")
+		fmt.Println("从 Redis 中 获取数据...")
 		// redis 中有数据
 		json.Unmarshal(areaData, &areas)
 	}
@@ -161,34 +152,59 @@ func GetArea(ctx *gin.Context) {
 
 // 处理登录业务
 func PostLogin(ctx *gin.Context) {
-	//	获取前端数据
+
+	//微服务版本登录功能
+	////	获取前端数据
 	var loginData struct {
 		Mobile   string `json:"mobile"`
 		PassWord string `json:"password"`
 	}
 	ctx.Bind(&loginData)
+	//fmt.Println("测试loginData", loginData)
 
-	resp := make(map[string]interface{})
+	//指定consul服务发现
+	microService := utils.InitMicro()
+	//初始化客户端
+	microClient := registerMicro.NewRegisterService("micro_register", microService.Client())
 
-	//获取数据库数据,查询是否和数据库的数据匹配
-	userName, err := model.Login(loginData.Mobile, loginData.PassWord)
-
-	if err == nil {
-		fmt.Println("postLogin登录成功")
-		resp["errno"] = utils.RECODE_OK
-		resp["errmsg"] = utils.RecodeText(utils.RECODE_OK)
-
-		s := sessions.Default(ctx) //初始化session
-		//fmt.Println("初始化session")
-		s.Set("userName", userName) //将用户名设置到session中
-		s.Save()
+	resp, err := microClient.Login(context.TODO(), &registerMicro.RegRequest{Mobile: loginData.Mobile, Password: loginData.PassWord})
+	fmt.Println("resp info", resp)
+	if err != nil {
+		fmt.Println("调用login服务错误", err)
+		return
 	} else {
-		fmt.Println("登录失败")
-		resp["errno"] = utils.RECODE_LOGINERR
-		resp["errmsg"] = utils.RecodeText(utils.RECODE_LOGINERR)
+		fmt.Println("login服务正常")
+		//返回数据  存储session  并返回数据给web端
+		session := sessions.Default(ctx)
+		session.Set("userName", resp.Name)
+		session.Save()
+		//fmt.Println("login测试session", session.Get("userName"))
 	}
 
 	ctx.JSON(http.StatusOK, resp)
+
+	//非微服务版本
+	//resp := make(map[string]interface{})
+	//
+	////获取数据库数据,查询是否和数据库的数据匹配
+	//userName, err := model.Login(loginData.Mobile, loginData.PassWord)
+	//
+	//if err == nil {
+	//	fmt.Println("postLogin登录成功")
+	//	resp["errno"] = utils.RECODE_OK
+	//	resp["errmsg"] = utils.RecodeText(utils.RECODE_OK)
+	//
+	//	s := sessions.Default(ctx) //初始化session
+	//	//fmt.Println("初始化session")
+	//	s.Set("userName", userName) //将用户名设置到session中
+	//	s.Save()
+	//} else {
+	//	fmt.Println("登录失败")
+	//	resp["errno"] = utils.RECODE_LOGINERR
+	//	resp["errmsg"] = utils.RecodeText(utils.RECODE_LOGINERR)
+	//}
+	//
+	//ctx.JSON(http.StatusOK, resp)
 }
 
 // 退出登录
@@ -339,24 +355,24 @@ func PutUserAuth(ctx *gin.Context) {
 		return
 	}
 
-	session := sessions.Default(ctx)
-	userName := session.Get("userName")
+	//session := sessions.Default(ctx)
+	//userName := session.Get("userName")
 
-	//处理数据 微服务
-	microService := utils.InitMicro()
-	microClient := userMicro.NewUserService("micro_user", microService.Client())
-
-	//调用远程服务
-
-	resp, err := microClient.AuthUpdate(context.TODO(), &userMicro.AuthReq{
-		UserName: userName.(string),
-		RealName: auth.RealName,
-		IdCard:   auth.IdCard,
-	})
-	if err != nil {
-		fmt.Println("resp情况", err)
-	}
+	////处理数据 微服务
+	//microService := utils.InitMicro()
+	//microClient := userMicro.NewUserService("micro_user", microService.Client())
+	//
+	////调用远程服务
+	//
+	//resp, err := microClient.AuthUpdate(context.TODO(), &userMicro.AuthReq{
+	//	UserName: userName.(string),
+	//	RealName: auth.RealName,
+	//	IdCard:   auth.IdCard,
+	//})
+	//if err != nil {
+	//	fmt.Println("resp情况", err)
+	//}
 
 	//返回数据
-	ctx.JSON(http.StatusOK, resp)
+	//ctx.JSON(http.StatusOK, resp)
 }

@@ -27,60 +27,60 @@ function generateImageCode() {
     $(".image-code>img").attr("src", imageCodeUrl);
 }
 
-function sendSMSCode() {
-    // 校验参数，保证输入框有数据填写
-    $(".phonecode-a").removeAttr("onclick");
-    var mobile = $("#mobile").val();
-    if (!mobile) {
-        $("#mobile-err span").html("请填写正确的手机号！");
-        $("#mobile-err").show();
-        $(".phonecode-a").attr("onclick", "sendSMSCode();");
-        return;
-    } 
-    var imageCode = $("#imagecode").val();
-    if (!imageCode) {
-        $("#image-code-err span").html("请填写验证码！");
-        $("#image-code-err").show();
-        $(".phonecode-a").attr("onclick", "sendSMSCode();");
-        return;
-    }
-
-    // 通过ajax方式向后端接口发送请求，让后端发送短信验证码
-    var req = {
-        text: imageCode, // 用户填写的图片验证码
-        id: imageCodeId // 图片验证码的编号
-    }
-    $.get("/api/v1.0/smscode/"+mobile, req, function (resp) {
-        // 表示后端发送短信成功
-        if (resp.errno == "0") {
-            // 倒计时60秒，60秒后允许用户再次点击发送短信验证码的按钮
-            var num = 60;
-            // 设置一个计时器
-            var t = setInterval(function () {
-                if (num == 1) {
-                    // 如果计时器到最后, 清除计时器对象
-                    clearInterval(t);
-                    // 将点击获取验证码的按钮展示的文本回复成原始文本
-                    $(".phonecode-a").html("获取验证码");
-                    // 将点击按钮的onclick事件函数恢复回去
-                    $(".phonecode-a").attr("onclick", "sendSMSCode();");
-                } else {
-                    num -= 1;
-                    // 展示倒计时信息
-                    $(".phonecode-a").html(num+"秒");
-                }
-            }, 1000, 60)
-        } else {
-            // 表示后端出现了错误，可以将错误信息展示到前端页面中
-            $("#phone-code-err span").html(resp.errmsg);
-            $("#phone-code-err").show();
-            // 将点击按钮的onclick事件函数恢复回去
-            $(".phonecode-a").attr("onclick", "sendSMSCode();");
-        }
-
-    }, "json");
-
-}
+// function sendSMSCode() {
+//     // 校验参数，保证输入框有数据填写
+//     $(".phonecode-a").removeAttr("onclick");
+//     var mobile = $("#mobile").val();
+//     if (!mobile) {
+//         $("#mobile-err span").html("请填写正确的手机号！");
+//         $("#mobile-err").show();
+//         $(".phonecode-a").attr("onclick", "sendSMSCode();");
+//         return;
+//     }
+//     var imageCode = $("#imagecode").val();
+//     if (!imageCode) {
+//         $("#image-code-err span").html("请填写验证码！");
+//         $("#image-code-err").show();
+//         $(".phonecode-a").attr("onclick", "sendSMSCode();");
+//         return;
+//     }
+//
+//     // 通过ajax方式向后端接口发送请求，让后端发送短信验证码
+//     var req = {
+//         text: imageCode, // 用户填写的图片验证码
+//         id: imageCodeId // 图片验证码的编号
+//     }
+//     $.get("/api/v1.0/smscode/"+mobile, req, function (resp) {
+//         // 表示后端发送短信成功
+//         if (resp.errno == "0") {
+//             // 倒计时60秒，60秒后允许用户再次点击发送短信验证码的按钮
+//             var num = 60;
+//             // 设置一个计时器
+//             var t = setInterval(function () {
+//                 if (num == 1) {
+//                     // 如果计时器到最后, 清除计时器对象
+//                     clearInterval(t);
+//                     // 将点击获取验证码的按钮展示的文本回复成原始文本
+//                     $(".phonecode-a").html("获取验证码");
+//                     // 将点击按钮的onclick事件函数恢复回去
+//                     $(".phonecode-a").attr("onclick", "sendSMSCode();");
+//                 } else {
+//                     num -= 1;
+//                     // 展示倒计时信息
+//                     $(".phonecode-a").html(num+"秒");
+//                 }
+//             }, 1000, 60)
+//         } else {
+//             // 表示后端出现了错误，可以将错误信息展示到前端页面中
+//             $("#phone-code-err span").html(resp.errmsg);
+//             $("#phone-code-err").show();
+//             // 将点击按钮的onclick事件函数恢复回去
+//             $(".phonecode-a").attr("onclick", "sendSMSCode();");
+//         }
+//
+//     }, "json");
+//
+// }
 
 $(document).ready(function() {
     generateImageCode();  // 生成一个图片验证码的编号，并设置页面中图片验证码img标签的src属性
@@ -90,9 +90,9 @@ $(document).ready(function() {
     $("#imagecode").focus(function(){
         $("#image-code-err").hide();
     });
-    $("#phonecode").focus(function(){
-        $("#phone-code-err").hide();
-    });
+    // $("#phonecode").focus(function(){
+    //     $("#phone-code-err").hide();
+    // });
     $("#password").focus(function(){
         $("#password-err").hide();
         $("#password2-err").hide();
@@ -104,7 +104,7 @@ $(document).ready(function() {
         // 阻止浏览器对于表单的默认行为，即阻止浏览器把表单的数据转换为表单格式kye=val&key=val的字符串发送到后端
         e.preventDefault();
         var mobile = $("#mobile").val();
-        var phoneCode = $("#phonecode").val();
+        // var phoneCode = $("#phonecode").val();
         var passwd = $("#password").val();
         var passwd2 = $("#password2").val();
         if (!mobile) {
@@ -112,11 +112,11 @@ $(document).ready(function() {
             $("#mobile-err").show();
             return;
         } 
-        if (!phoneCode) {
+        // if (!phoneCode) {
             // $("#phone-code-err span").html("请填写短信验证码！");
             // $("#phone-code-err").show();
-            return;
-        }
+            // return;
+        // }
         if (!passwd) {
             $("#password-err span").html("请填写密码!");
             $("#password-err").show();
@@ -131,8 +131,8 @@ $(document).ready(function() {
         // 构造发送到后端的数据 方式一
         var req = {
             "mobile": mobile,
-            "password": passwd,
-            "sms_code": phoneCode
+            "password": passwd
+            // "sms_code": phoneCode
         };
 
         // // 方式二

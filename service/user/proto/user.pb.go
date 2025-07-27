@@ -2,9 +2,9 @@
 // versions:
 // 	protoc-gen-go v1.36.6
 // 	protoc        v3.21.2
-// source: user.proto
+// source: proto/user.proto
 
-package proto
+package user
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -21,29 +21,28 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type RegReq struct {
+type Message struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Mobile        string                 `protobuf:"bytes,1,opt,name=mobile,proto3" json:"mobile,omitempty"`
-	Password      string                 `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`
+	Say           string                 `protobuf:"bytes,1,opt,name=say,proto3" json:"say,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *RegReq) Reset() {
-	*x = RegReq{}
-	mi := &file_user_proto_msgTypes[0]
+func (x *Message) Reset() {
+	*x = Message{}
+	mi := &file_proto_user_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *RegReq) String() string {
+func (x *Message) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*RegReq) ProtoMessage() {}
+func (*Message) ProtoMessage() {}
 
-func (x *RegReq) ProtoReflect() protoreflect.Message {
-	mi := &file_user_proto_msgTypes[0]
+func (x *Message) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_user_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -54,37 +53,28 @@ func (x *RegReq) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use RegReq.ProtoReflect.Descriptor instead.
-func (*RegReq) Descriptor() ([]byte, []int) {
-	return file_user_proto_rawDescGZIP(), []int{0}
+// Deprecated: Use Message.ProtoReflect.Descriptor instead.
+func (*Message) Descriptor() ([]byte, []int) {
+	return file_proto_user_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *RegReq) GetMobile() string {
+func (x *Message) GetSay() string {
 	if x != nil {
-		return x.Mobile
-	}
-	return ""
-}
-
-func (x *RegReq) GetPassword() string {
-	if x != nil {
-		return x.Password
+		return x.Say
 	}
 	return ""
 }
 
 type Request struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Phone         string                 `protobuf:"bytes,1,opt,name=phone,proto3" json:"phone,omitempty"`
-	ImageCode     string                 `protobuf:"bytes,2,opt,name=imageCode,proto3" json:"imageCode,omitempty"`
-	Uuid          string                 `protobuf:"bytes,3,opt,name=uuid,proto3" json:"uuid,omitempty"`
+	Name          string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *Request) Reset() {
 	*x = Request{}
-	mi := &file_user_proto_msgTypes[1]
+	mi := &file_proto_user_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -96,7 +86,7 @@ func (x *Request) String() string {
 func (*Request) ProtoMessage() {}
 
 func (x *Request) ProtoReflect() protoreflect.Message {
-	mi := &file_user_proto_msgTypes[1]
+	mi := &file_proto_user_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -109,41 +99,26 @@ func (x *Request) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Request.ProtoReflect.Descriptor instead.
 func (*Request) Descriptor() ([]byte, []int) {
-	return file_user_proto_rawDescGZIP(), []int{1}
+	return file_proto_user_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *Request) GetPhone() string {
+func (x *Request) GetName() string {
 	if x != nil {
-		return x.Phone
-	}
-	return ""
-}
-
-func (x *Request) GetImageCode() string {
-	if x != nil {
-		return x.ImageCode
-	}
-	return ""
-}
-
-func (x *Request) GetUuid() string {
-	if x != nil {
-		return x.Uuid
+		return x.Name
 	}
 	return ""
 }
 
 type Response struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Errno         string                 `protobuf:"bytes,1,opt,name=errno,proto3" json:"errno,omitempty"`
-	Errmsg        string                 `protobuf:"bytes,2,opt,name=errmsg,proto3" json:"errmsg,omitempty"`
+	Msg           string                 `protobuf:"bytes,1,opt,name=msg,proto3" json:"msg,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *Response) Reset() {
 	*x = Response{}
-	mi := &file_user_proto_msgTypes[2]
+	mi := &file_proto_user_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -155,7 +130,7 @@ func (x *Response) String() string {
 func (*Response) ProtoMessage() {}
 
 func (x *Response) ProtoReflect() protoreflect.Message {
-	mi := &file_user_proto_msgTypes[2]
+	mi := &file_proto_user_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -168,47 +143,38 @@ func (x *Response) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Response.ProtoReflect.Descriptor instead.
 func (*Response) Descriptor() ([]byte, []int) {
-	return file_user_proto_rawDescGZIP(), []int{2}
+	return file_proto_user_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *Response) GetErrno() string {
+func (x *Response) GetMsg() string {
 	if x != nil {
-		return x.Errno
+		return x.Msg
 	}
 	return ""
 }
 
-func (x *Response) GetErrmsg() string {
-	if x != nil {
-		return x.Errmsg
-	}
-	return ""
-}
-
-type AuthReq struct {
+type StreamingRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	IdCard        string                 `protobuf:"bytes,1,opt,name=id_card,json=idCard,proto3" json:"id_card,omitempty"`
-	RealName      string                 `protobuf:"bytes,2,opt,name=real_name,json=realName,proto3" json:"real_name,omitempty"`
-	UserName      string                 `protobuf:"bytes,3,opt,name=userName,proto3" json:"userName,omitempty"`
+	Count         int64                  `protobuf:"varint,1,opt,name=count,proto3" json:"count,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *AuthReq) Reset() {
-	*x = AuthReq{}
-	mi := &file_user_proto_msgTypes[3]
+func (x *StreamingRequest) Reset() {
+	*x = StreamingRequest{}
+	mi := &file_proto_user_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *AuthReq) String() string {
+func (x *StreamingRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*AuthReq) ProtoMessage() {}
+func (*StreamingRequest) ProtoMessage() {}
 
-func (x *AuthReq) ProtoReflect() protoreflect.Message {
-	mi := &file_user_proto_msgTypes[3]
+func (x *StreamingRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_user_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -219,55 +185,40 @@ func (x *AuthReq) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use AuthReq.ProtoReflect.Descriptor instead.
-func (*AuthReq) Descriptor() ([]byte, []int) {
-	return file_user_proto_rawDescGZIP(), []int{3}
+// Deprecated: Use StreamingRequest.ProtoReflect.Descriptor instead.
+func (*StreamingRequest) Descriptor() ([]byte, []int) {
+	return file_proto_user_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *AuthReq) GetIdCard() string {
+func (x *StreamingRequest) GetCount() int64 {
 	if x != nil {
-		return x.IdCard
+		return x.Count
 	}
-	return ""
+	return 0
 }
 
-func (x *AuthReq) GetRealName() string {
-	if x != nil {
-		return x.RealName
-	}
-	return ""
-}
-
-func (x *AuthReq) GetUserName() string {
-	if x != nil {
-		return x.UserName
-	}
-	return ""
-}
-
-type AuthResp struct {
+type StreamingResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Errno         string                 `protobuf:"bytes,1,opt,name=errno,proto3" json:"errno,omitempty"`
-	Errmsg        string                 `protobuf:"bytes,2,opt,name=errmsg,proto3" json:"errmsg,omitempty"`
+	Count         int64                  `protobuf:"varint,1,opt,name=count,proto3" json:"count,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *AuthResp) Reset() {
-	*x = AuthResp{}
-	mi := &file_user_proto_msgTypes[4]
+func (x *StreamingResponse) Reset() {
+	*x = StreamingResponse{}
+	mi := &file_proto_user_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *AuthResp) String() string {
+func (x *StreamingResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*AuthResp) ProtoMessage() {}
+func (*StreamingResponse) ProtoMessage() {}
 
-func (x *AuthResp) ProtoReflect() protoreflect.Message {
-	mi := &file_user_proto_msgTypes[4]
+func (x *StreamingResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_user_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -278,78 +229,62 @@ func (x *AuthResp) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use AuthResp.ProtoReflect.Descriptor instead.
-func (*AuthResp) Descriptor() ([]byte, []int) {
-	return file_user_proto_rawDescGZIP(), []int{4}
+// Deprecated: Use StreamingResponse.ProtoReflect.Descriptor instead.
+func (*StreamingResponse) Descriptor() ([]byte, []int) {
+	return file_proto_user_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *AuthResp) GetErrno() string {
+func (x *StreamingResponse) GetCount() int64 {
 	if x != nil {
-		return x.Errno
+		return x.Count
 	}
-	return ""
+	return 0
 }
 
-func (x *AuthResp) GetErrmsg() string {
-	if x != nil {
-		return x.Errmsg
-	}
-	return ""
-}
+var File_proto_user_proto protoreflect.FileDescriptor
 
-var File_user_proto protoreflect.FileDescriptor
-
-const file_user_proto_rawDesc = "" +
+const file_proto_user_proto_rawDesc = "" +
 	"\n" +
-	"\n" +
-	"user.proto\x12\x04user\"<\n" +
-	"\x06RegReq\x12\x16\n" +
-	"\x06mobile\x18\x01 \x01(\tR\x06mobile\x12\x1a\n" +
-	"\bpassword\x18\x02 \x01(\tR\bpassword\"Q\n" +
-	"\aRequest\x12\x14\n" +
-	"\x05phone\x18\x01 \x01(\tR\x05phone\x12\x1c\n" +
-	"\timageCode\x18\x02 \x01(\tR\timageCode\x12\x12\n" +
-	"\x04uuid\x18\x03 \x01(\tR\x04uuid\"8\n" +
-	"\bResponse\x12\x14\n" +
-	"\x05errno\x18\x01 \x01(\tR\x05errno\x12\x16\n" +
-	"\x06errmsg\x18\x02 \x01(\tR\x06errmsg\"[\n" +
-	"\aAuthReq\x12\x17\n" +
-	"\aid_card\x18\x01 \x01(\tR\x06idCard\x12\x1b\n" +
-	"\treal_name\x18\x02 \x01(\tR\brealName\x12\x1a\n" +
-	"\buserName\x18\x03 \x01(\tR\buserName\"8\n" +
-	"\bAuthResp\x12\x14\n" +
-	"\x05errno\x18\x01 \x01(\tR\x05errno\x12\x16\n" +
-	"\x06errmsg\x18\x02 \x01(\tR\x06errmsg2a\n" +
-	"\x04User\x12*\n" +
-	"\bRegister\x12\f.user.RegReq\x1a\x0e.user.Response\"\x00\x12-\n" +
-	"\n" +
-	"AuthUpdate\x12\r.user.AuthReq\x1a\x0e.user.AuthResp\"\x00B\x0eZ\f./proto;userb\x06proto3"
+	"\x10proto/user.proto\x12\x04user\"\x1b\n" +
+	"\aMessage\x12\x10\n" +
+	"\x03say\x18\x01 \x01(\tR\x03say\"\x1d\n" +
+	"\aRequest\x12\x12\n" +
+	"\x04name\x18\x01 \x01(\tR\x04name\"\x1c\n" +
+	"\bResponse\x12\x10\n" +
+	"\x03msg\x18\x01 \x01(\tR\x03msg\"(\n" +
+	"\x10StreamingRequest\x12\x14\n" +
+	"\x05count\x18\x01 \x01(\x03R\x05count\")\n" +
+	"\x11StreamingResponse\x12\x14\n" +
+	"\x05count\x18\x01 \x01(\x03R\x05count2n\n" +
+	"\x04User\x12'\n" +
+	"\x04Call\x12\r.user.Request\x1a\x0e.user.Response\"\x00\x12=\n" +
+	"\x06Stream\x12\x16.user.StreamingRequest\x1a\x17.user.StreamingResponse\"\x000\x01B\x0eZ\f./proto;userb\x06proto3"
 
 var (
-	file_user_proto_rawDescOnce sync.Once
-	file_user_proto_rawDescData []byte
+	file_proto_user_proto_rawDescOnce sync.Once
+	file_proto_user_proto_rawDescData []byte
 )
 
-func file_user_proto_rawDescGZIP() []byte {
-	file_user_proto_rawDescOnce.Do(func() {
-		file_user_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_user_proto_rawDesc), len(file_user_proto_rawDesc)))
+func file_proto_user_proto_rawDescGZIP() []byte {
+	file_proto_user_proto_rawDescOnce.Do(func() {
+		file_proto_user_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_proto_user_proto_rawDesc), len(file_proto_user_proto_rawDesc)))
 	})
-	return file_user_proto_rawDescData
+	return file_proto_user_proto_rawDescData
 }
 
-var file_user_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
-var file_user_proto_goTypes = []any{
-	(*RegReq)(nil),   // 0: user.RegReq
-	(*Request)(nil),  // 1: user.Request
-	(*Response)(nil), // 2: user.Response
-	(*AuthReq)(nil),  // 3: user.AuthReq
-	(*AuthResp)(nil), // 4: user.AuthResp
+var file_proto_user_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
+var file_proto_user_proto_goTypes = []any{
+	(*Message)(nil),           // 0: user.Message
+	(*Request)(nil),           // 1: user.Request
+	(*Response)(nil),          // 2: user.Response
+	(*StreamingRequest)(nil),  // 3: user.StreamingRequest
+	(*StreamingResponse)(nil), // 4: user.StreamingResponse
 }
-var file_user_proto_depIdxs = []int32{
-	0, // 0: user.User.Register:input_type -> user.RegReq
-	3, // 1: user.User.AuthUpdate:input_type -> user.AuthReq
-	2, // 2: user.User.Register:output_type -> user.Response
-	4, // 3: user.User.AuthUpdate:output_type -> user.AuthResp
+var file_proto_user_proto_depIdxs = []int32{
+	1, // 0: user.User.Call:input_type -> user.Request
+	3, // 1: user.User.Stream:input_type -> user.StreamingRequest
+	2, // 2: user.User.Call:output_type -> user.Response
+	4, // 3: user.User.Stream:output_type -> user.StreamingResponse
 	2, // [2:4] is the sub-list for method output_type
 	0, // [0:2] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
@@ -357,26 +292,26 @@ var file_user_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for field type_name
 }
 
-func init() { file_user_proto_init() }
-func file_user_proto_init() {
-	if File_user_proto != nil {
+func init() { file_proto_user_proto_init() }
+func file_proto_user_proto_init() {
+	if File_proto_user_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_user_proto_rawDesc), len(file_user_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_proto_user_proto_rawDesc), len(file_proto_user_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   5,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_user_proto_goTypes,
-		DependencyIndexes: file_user_proto_depIdxs,
-		MessageInfos:      file_user_proto_msgTypes,
+		GoTypes:           file_proto_user_proto_goTypes,
+		DependencyIndexes: file_proto_user_proto_depIdxs,
+		MessageInfos:      file_proto_user_proto_msgTypes,
 	}.Build()
-	File_user_proto = out.File
-	file_user_proto_goTypes = nil
-	file_user_proto_depIdxs = nil
+	File_proto_user_proto = out.File
+	file_proto_user_proto_goTypes = nil
+	file_proto_user_proto_depIdxs = nil
 }

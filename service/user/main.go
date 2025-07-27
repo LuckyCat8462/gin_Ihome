@@ -1,29 +1,21 @@
 package main
 
 import (
-	"go-micro.dev/v5"
-	"go-micro.dev/v5/registry/consul"
 	"user/handler"
-	user "user/proto"
+	pb "user/proto"
+
+	"go-micro.dev/v5"
 )
 
 func main() {
-	//初始化consul
-	consulReg := consul.NewConsulRegistry()
-
 	// Create service
-	service := micro.NewService(
-		micro.Name("micro_user"),
-		micro.Registry(consulReg),             //添加注册
-		micro.Address("192.168.81.128:12312"), //主动添加addr,防止其生成随机port
-		micro.Version("latest"),
-	)
+	service := micro.New("user")
 
-	// 暂时用不上Initialize service
-	//service.Init()
+	// Initialize service
+	service.Init()
+
 	// Register handler
-
-	user.RegisterUserHandler(service.Server(), handler.New())
+	pb.RegisterUserHandler(service.Server(), handler.New())
 
 	// Run service
 	service.Run()

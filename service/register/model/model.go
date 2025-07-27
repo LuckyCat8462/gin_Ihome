@@ -6,6 +6,7 @@ import (
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"gorm.io/gorm/schema"
+	"register/conf"
 	"time"
 )
 
@@ -81,15 +82,16 @@ type OrderHouse struct {
 var GlobalConn *gorm.DB
 
 func InitDb() (*gorm.DB, error) {
-	//func main() {
-	dsn := "neko:neko123456@tcp(127.0.0.1:3306)/search_house?charset=utf8mb4&parseTime=True&loc=Local"
+	//字符串拼接
+	dsn := conf.MysqlName + ":" + conf.MysqlPwd + "@tcp(" + conf.MysqlAddr + ":" + conf.MysqlPort + ")/" + conf.MysqlDB + "?parseTime=true"
+
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{ //	gorm参数
 		//不要复数表名
 		NamingStrategy:                           schema.NamingStrategy{SingularTable: true},
 		DisableForeignKeyConstraintWhenMigrating: true,
 	})
 	if err != nil {
-		fmt.Println(err)
+		fmt.Println("数据库初始化错误", err)
 		return nil, err
 	}
 

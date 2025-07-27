@@ -29,7 +29,8 @@ body {
     width: 30px;
 }
 .phonecode {
-    background-color: #eeedf1;
+    /*background-color: #eeedf1;*/
+    background-color: black;
     padding: 6px 4px;
     width: 90px;
     text-align: center;
@@ -74,4 +75,9 @@ body {
 }
 .error-msg i {
     margin-right: 5px;
+}
+.formRegister{
+    visibility: hidden;
+    display: none;
+
 }

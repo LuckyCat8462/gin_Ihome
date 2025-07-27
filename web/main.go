@@ -47,7 +47,7 @@ func main() {
 
 		r1.GET("/imagecode/:uuid", controller.GetImageCd)
 		r1.GET("/smscode/:phone", controller.GetSmscd)
-		r1.POST("/users", controller.PostRet)
+		r1.POST("/users", controller.PostReg)
 		r1.GET("/areas", controller.GetArea)
 		r1.POST("/sessions", controller.PostLogin)
 

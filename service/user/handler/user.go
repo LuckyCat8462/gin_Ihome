@@ -2,10 +2,9 @@ package handler
 
 import (
 	"context"
-
-	log "go-micro.dev/v5/logger"
-
-	pb "user/proto"
+	"user/model"
+	user "user/proto"
+	"user/utils"
 )
 
 type User struct{}
@@ -15,25 +14,19 @@ func New() *User {
 	return &User{}
 }
 
-// Call is a single request handler called via client.Call or the generated client code
-func (e *User) Call(ctx context.Context, req *pb.Request, rsp *pb.Response) error {
-	log.Info("Received User.Call request")
-	rsp.Msg = "Hello " + req.Name
-	return nil
-}
+func (e *User) AuthUpdate(ctx context.Context, req *user.AuthReq, resp *user.AuthResp) error {
+	//调用借口校验realName和idcard是否匹配
 
-// Stream is a server side stream handler called via client.Stream or the generated client code
-func (e *User) Stream(ctx context.Context, req *pb.StreamingRequest, stream pb.User_StreamStream) error {
-	log.Infof("Received User.Stream request with count: %d", req.Count)
-
-	for i := 0; i < int(req.Count); i++ {
-		log.Infof("Responding: %d", i)
-		if err := stream.Send(&pb.StreamingResponse{
-			Count: int64(i),
-		}); err != nil {
-			return err
-		}
+	//存储真实姓名和真是身份证号  数据库
+	err := model.SaveRealName(req.UserName, req.RealName, req.IdCard)
+	if err != nil {
+		resp.Errno = utils.RECODE_DBERR
+		resp.Errmsg = utils.RecodeText(utils.RECODE_DBERR)
+		return nil
 	}
+
+	resp.Errno = utils.RECODE_OK
+	resp.Errmsg = utils.RecodeText(utils.RECODE_OK)
 
 	return nil
 }

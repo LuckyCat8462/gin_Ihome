@@ -8,6 +8,7 @@ import (
 	getCaptcha "gin_test01/web/proto/getCaptcha"
 
 	registerMicro "gin_test01/web/proto/register"
+	userMicro "gin_test01/web/proto/user"
 	"gin_test01/web/utils"
 	"github.com/afocus/captcha"
 	"github.com/gin-contrib/sessions"
@@ -355,24 +356,25 @@ func PutUserAuth(ctx *gin.Context) {
 		return
 	}
 
-	//session := sessions.Default(ctx)
-	//userName := session.Get("userName")
+	session := sessions.Default(ctx)
+	userName := session.Get("userName")
+	fmt.Println("获取userName：", userName)
 
-	////处理数据 微服务
-	//microService := utils.InitMicro()
-	//microClient := userMicro.NewUserService("micro_user", microService.Client())
-	//
-	////调用远程服务
-	//
-	//resp, err := microClient.AuthUpdate(context.TODO(), &userMicro.AuthReq{
-	//	UserName: userName.(string),
-	//	RealName: auth.RealName,
-	//	IdCard:   auth.IdCard,
-	//})
-	//if err != nil {
-	//	fmt.Println("resp情况", err)
-	//}
+	//处理数据 微服务
+	microService := utils.InitMicro()
+	microClient := userMicro.NewUserService("micro_user", microService.Client())
+
+	//调用远程服务
+
+	resp, err := microClient.AuthUpdate(context.TODO(), &userMicro.AuthReq{
+		UserName: userName.(string),
+		RealName: auth.RealName,
+		IdCard:   auth.IdCard,
+	})
+	if err != nil {
+		fmt.Println("resp情况", err)
+	}
 
 	//返回数据
-	//ctx.JSON(http.StatusOK, resp)
+	ctx.JSON(http.StatusOK, resp)
 }

@@ -14,6 +14,7 @@ $(document).ready(function(){
             $.get("/api/v1.0/user/houses", function(resp){
                 if ("0" == resp.errno) {
                     $("#houses-list").html(template("houses-list-tmpl", {houses:resp.data.houses}));
+
                 } else {
                     $("#houses-list").html(template("houses-list-tmpl", {houses:[]}));
                 }

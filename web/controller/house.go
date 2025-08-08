@@ -7,6 +7,7 @@ import (
 	"gin_test01/web/model"
 	getCaptcha "gin_test01/web/proto/getCaptcha"
 
+	houseMicro "gin_test01/web/proto/house"
 	registerMicro "gin_test01/web/proto/register"
 	userMicro "gin_test01/web/proto/user"
 	"gin_test01/web/utils"
@@ -127,7 +128,7 @@ func GetArea(ctx *gin.Context) {
 	}
 	// 当初使用 "字节切片" 存入, 现在使用 切片类型接收
 	areaData, _ := redis.Bytes(conn.Do("get", "areaData"))
-	fmt.Println("user.go-GetArea函数：获取地址信息")
+	fmt.Println("house.go-GetArea函数：获取地址信息")
 	// 没有从 Redis 中获取到数据
 	if len(areaData) == 0 {
 		fmt.Println("从 MySQL 中 获取数据...")
@@ -374,6 +375,143 @@ func PutUserAuth(ctx *gin.Context) {
 	if err != nil {
 		fmt.Println("resp情况", err)
 	}
+
+	//返回数据
+	ctx.JSON(http.StatusOK, resp)
+}
+
+// 房屋结构体
+type HouseStu struct {
+	Acreage   string   `json:"acreage"`
+	Address   string   `json:"address"`
+	AreaId    string   `json:"area_id"`
+	Beds      string   `json:"beds"`
+	Capacity  string   `json:"capacity"`
+	Deposit   string   `json:"deposit"`
+	Facility  []string `json:"facility"`
+	MaxDays   string   `json:"max_days"`
+	MinDays   string   `json:"min_days"`
+	Price     string   `json:"price"`
+	RoomCount string   `json:"room_count"`
+	Title     string   `json:"title"`
+	Unit      string   `json:"unit"`
+}
+
+func PostHouses(ctx *gin.Context) {
+	//获取数据
+	var house HouseStu
+	err := ctx.Bind(&house)
+
+	//	校验数据
+	if err != nil {
+		fmt.Println("获取数据错误", err)
+		return
+	}
+
+	//	获取用户名
+	userName := sessions.Default(ctx).Get("userName")
+	fmt.Println("获取userName：", userName)
+
+	//处理数据 微服务
+	microService := utils.InitMicro()
+	microClient := houseMicro.NewHouseService("micro_house", microService.Client())
+
+	resp, _ := microClient.PubHouse(context.TODO(), &houseMicro.Request{
+		Acreage:   house.Acreage,
+		Address:   house.Address,
+		AreaId:    house.AreaId,
+		Beds:      house.Beds,
+		Capacity:  house.Capacity,
+		Deposit:   house.Deposit,
+		Facility:  house.Facility,
+		MaxDays:   house.MaxDays,
+		MinDays:   house.MinDays,
+		Price:     house.Price,
+		RoomCount: house.RoomCount,
+		Title:     house.Title,
+		Unit:      house.Unit,
+		UserName:  userName.(string),
+	})
+
+	ctx.JSON(http.StatusOK, resp)
+
+}
+
+// 获取用户房源信息
+func GetUserHouses(ctx *gin.Context) {
+	//获取用户名
+	userName := sessions.Default(ctx).Get("userName")
+	fmt.Println("GetUserHouses函数", userName)
+	//微服务
+	microService := utils.InitMicro()
+	microClient := houseMicro.NewHouseService("micro_house", microService.Client())
+
+	////调用远程服务
+	resp, _ := microClient.GetHouseInfo(context.TODO(), &houseMicro.GetReq{UserName: userName.(string)})
+
+	//返回数据
+	ctx.JSON(http.StatusOK, resp)
+}
+
+func PostHousesImage(ctx *gin.Context) {
+	//获取数据
+	houseId := ctx.Param("id")
+	fileHeader, err := ctx.FormFile("house_image")
+	//校验数据
+	if houseId == "" || err != nil {
+		fmt.Println("传入数据不完整", err)
+		return
+	}
+
+	//三种校验 大小,类型,防止重名  fastdfs
+	if fileHeader.Size > 50000000 {
+		fmt.Println("文件过大,请重新选择")
+		return
+	}
+
+	fileExt := path.Ext(fileHeader.Filename)
+	if fileExt != ".png" && fileExt != ".jpg" {
+		fmt.Println("文件类型错误,请重新选择")
+		return
+	}
+
+	//获取文件字节切片
+	file, _ := fileHeader.Open()
+	buf := make([]byte, fileHeader.Size)
+	file.Read(buf)
+
+	//处理数据  服务中实现
+	microService := utils.InitMicro()
+	microClient := houseMicro.NewHouseService("micro_house", microService.Client())
+	//调用服务
+	resp, _ := microClient.UploadHouseImg(context.TODO(), &houseMicro.ImgReq{
+		HouseId: houseId,
+		ImgData: buf,
+		FileExt: fileExt,
+	})
+
+	//返回数据
+	ctx.JSON(http.StatusOK, resp)
+}
+
+// 获取房屋详情
+func GetHouseInfo(ctx *gin.Context) {
+	//获取数据
+	houseId := ctx.Param("id")
+	//校验数据
+	if houseId == "" {
+		fmt.Println("获取数据错误")
+		return
+	}
+	userName := sessions.Default(ctx).Get("userName")
+	//处理数据
+	microService := utils.InitMicro()
+	microClient := houseMicro.NewHouseService("micro_house", microService.Client())
+	//调用远程服务
+	resp, _ := microClient.GetHouseDetail(context.TODO(), &houseMicro.DetailReq{
+		HouseId:  houseId,
+		UserName: userName.(string),
+	})
 
 	//返回数据
 	ctx.JSON(http.StatusOK, resp)

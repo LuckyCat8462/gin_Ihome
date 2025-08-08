@@ -62,6 +62,15 @@ func main() {
 		// 获取实名认证
 		r1.GET("/user/auth", controller.GetUserInfo)
 
+		//获取房源信息
+		r1.GET("/user/houses", controller.GetUserHouses)
+		//	上传房屋信息
+		r1.POST("/houses", controller.PostHouses)
+		//添加房源图片
+		r1.POST("/houses/:id/images", controller.PostHousesImage)
+		//展示房屋详情
+		r1.GET("/houses/:id", controller.GetHouseInfo)
+
 	}
 
 	//3.启动运行

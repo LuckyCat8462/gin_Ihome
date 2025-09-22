@@ -70,6 +70,16 @@ func main() {
 		r1.POST("/houses/:id/images", controller.PostHousesImage)
 		//展示房屋详情
 		r1.GET("/houses/:id", controller.GetHouseInfo)
+		//搜索房屋
+		r1.GET("/houses", controller.GetHouses)
+		//展示首页轮播图
+		r1.GET("/house/index", controller.GetIndex)
+		//提交订单
+		r1.POST("/orders", controller.PostOrders)
+		//获取订单
+		r1.GET("/user/orders", controller.GetUserOrder)
+		//同意/拒绝订单
+		r1.PUT("/orders/:id/status", controller.PutOrders)
 
 	}
 

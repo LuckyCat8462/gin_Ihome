@@ -5,20 +5,56 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="efdef0cc-7d5b-4510-86ae-c2fe4913e5b8" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/service/house/conf/config.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service/house/model/model.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service/house/model/modelFunc.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service/house/utils/eroor.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service/house/utils/utils.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/proto/house/house.pb.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/proto/house/house.pb.micro.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/proto/house/house.proto" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyShell/ScriptHouses.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/order/conf/config.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/order/model/model.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/order/model/modelFunc.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/order/utils/eroor.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/order/utils/utils.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/proto/order/order.pb.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/proto/order/order.pb.micro.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/proto/order/order.proto" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/controller/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/web/controller/house.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/getCaptcha/proto/getCaptcha.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/getCaptcha/proto/getCaptcha.pb.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/getCaptcha/proto/getCaptcha.pb.micro.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/getCaptcha/proto/getCaptcha.pb.micro.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/getCaptcha/proto/getCaptcha.proto" beforeDir="false" afterPath="$PROJECT_DIR$/service/getCaptcha/proto/getCaptcha.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/house/handler/house.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/house/handler/house.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/house/model/modelFunc.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/house/model/modelFunc.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/house/proto/house.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/house/proto/house.pb.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/house/proto/house.pb.micro.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/house/proto/house.pb.micro.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/house/proto/house.proto" beforeDir="false" afterPath="$PROJECT_DIR$/service/house/proto/house.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/register/handler/register.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/register/handler/register.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/register/proto/register.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/register/proto/register.pb.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/register/proto/register.pb.micro.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/register/proto/register.pb.micro.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/register/proto/register.proto" beforeDir="false" afterPath="$PROJECT_DIR$/service/register/proto/register.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/user/proto/user.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/user/proto/user.pb.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/user/proto/user.pb.micro.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/user/proto/user.pb.micro.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/user/proto/user.proto" beforeDir="false" afterPath="$PROJECT_DIR$/service/user/proto/user.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/controller/house.go" beforeDir="false" afterPath="$PROJECT_DIR$/web/controller/house.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/web/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/view/js/ihome/myhouse.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/view/js/ihome/myhouse.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/proto/getCaptcha/getCaptcha.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/web/proto/getCaptcha/getCaptcha.pb.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/proto/getCaptcha/getCaptcha.pb.micro.go" beforeDir="false" afterPath="$PROJECT_DIR$/web/proto/getCaptcha/getCaptcha.pb.micro.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/proto/getCaptcha/getCaptcha.proto" beforeDir="false" afterPath="$PROJECT_DIR$/web/proto/getCaptcha/getCaptcha.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/proto/house/house.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/web/proto/house/house.pb.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/proto/house/house.pb.micro.go" beforeDir="false" afterPath="$PROJECT_DIR$/web/proto/house/house.pb.micro.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/proto/house/house.proto" beforeDir="false" afterPath="$PROJECT_DIR$/web/proto/house/house.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/proto/register/register.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/web/proto/register/register.pb.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/proto/register/register.pb.micro.go" beforeDir="false" afterPath="$PROJECT_DIR$/web/proto/register/register.pb.micro.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/proto/register/register.proto" beforeDir="false" afterPath="$PROJECT_DIR$/web/proto/register/register.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/proto/user/user.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/web/proto/user/user.pb.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/proto/user/user.pb.micro.go" beforeDir="false" afterPath="$PROJECT_DIR$/web/proto/user/user.pb.micro.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/proto/user/user.proto" beforeDir="false" afterPath="$PROJECT_DIR$/web/proto/user/user.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/test/getCaptcha.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/web/test/getCaptcha.pb.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/test/getCaptcha.pb.micro.go" beforeDir="false" afterPath="$PROJECT_DIR$/web/test/getCaptcha.pb.micro.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/view/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/view/detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/view/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/view/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/view/js/ihome/detail.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/view/js/ihome/detail.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/view/js/ihome/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/view/js/ihome/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/view/lorders.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/view/lorders.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/view/my.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/view/my.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/view/myhouse.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/view/myhouse.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/view/orders.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/view/orders.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/view/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/view/search.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,6 +95,7 @@
     "Go 构建.go build model.go.executor": "Run",
     "Go 测试.go test gin_test01/web/test.executor": "Run",
     "Makefile 目标.proto (1).executor": "Run",
+    "Makefile 目标.proto (2).executor": "Run",
     "Makefile 目标.proto.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.go.formatter.settings.were.checked": "true",
@@ -67,7 +104,7 @@
     "git-widget-placeholder": "main",
     "go.import.settings.migrated": "true",
     "go.sdk.automatically.set": "true",
-    "last_opened_file_path": "/home/neko/Learning/WorkTools/Go_WorkSapce/src/gin_test01/service/house",
+    "last_opened_file_path": "/home/neko/Learning/WorkTools/Go_WorkSapce/src/gin_test01/MyShell",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
@@ -76,11 +113,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/MyShell" />
+      <recent name="$PROJECT_DIR$/service/order" />
+      <recent name="$PROJECT_DIR$/web/proto" />
       <recent name="$PROJECT_DIR$/service/house" />
       <recent name="$PROJECT_DIR$/web/proto/house" />
-      <recent name="$PROJECT_DIR$/web/proto/user" />
-      <recent name="$PROJECT_DIR$/service/user" />
-      <recent name="$PROJECT_DIR$/service/user/model" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/web/proto/register" />
@@ -100,15 +137,6 @@
       <filePath value="$PROJECT_DIR$/web/main.go" />
       <method v="2" />
     </configuration>
-    <configuration name="go build gin_test01/web/test (3)" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
-      <module name="gin_test01" />
-      <working_directory value="$PROJECT_DIR$" />
-      <kind value="FILE" />
-      <package value="gin_test01/web/test" />
-      <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$/web/test/07_fastdfsTest.go" />
-      <method v="2" />
-    </configuration>
     <configuration name="go build user.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="gin_test01" />
       <working_directory value="$PROJECT_DIR$" />
@@ -124,6 +152,12 @@
       </makefile>
       <method v="2" />
     </configuration>
+    <configuration name="proto (2)" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
+      <makefile filename="$PROJECT_DIR$/service/order/Makefile" target="proto" workingDirectory="" arguments="">
+        <envs />
+      </makefile>
+      <method v="2" />
+    </configuration>
     <configuration name="proto" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
       <makefile filename="$PROJECT_DIR$/service/user/Makefile" target="proto" workingDirectory="" arguments="">
         <envs />
@@ -133,10 +167,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Go 构建.go build gin_test01/web" />
+        <item itemvalue="Makefile 目标.proto (2)" />
         <item itemvalue="Makefile 目标.proto (1)" />
         <item itemvalue="Makefile 目标.proto" />
         <item itemvalue="Go 构建.go build user.go" />
-        <item itemvalue="Go 构建.go build gin_test01/web/test (3)" />
       </list>
     </recent_temporary>
   </component>

@@ -21,9 +21,15 @@
 
 - 语言：Go
 - web框架：Gin
+- 微服务框架：Go-Micro
+- 服务发现：consul
 - ORM:GORM
+- 结构化数据传输:ProtoBuffer
+- 远程调用协议：GRPC
 - 数据库：MySQL
 - 缓存：Redis
+- 图片上传：fastdfs+nginx
+- 脚本管理：Shell
 
 
 
@@ -38,6 +44,9 @@
 - fastdfs-nginx-module-1.24
 - nginx-1.24.0
 - protobuf-all 21.2
+- Grpc-Go V1.73
+- go-redis v8.11.5
+- redigo v1.9.2
 
 ## 2、获取代码
 
@@ -61,4 +70,5 @@
 
 # 其他文档
 
-需求规格说明书（SRS）、系统设计文档(SSD)、用户手册位于DOCS分支。
+接口文档位于DOCS分支。
+需求规格说明书（SRS）、系统设计文档(SSD)、用户手册待更新。
